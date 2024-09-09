@@ -1,6 +1,3 @@
-# Base Image 
-FROM fedora:37
-
 # Setup home directory, non interactive shell and timezone
 RUN mkdir /bot /tgenc && chmod 777 /bot
 WORKDIR /bot
@@ -12,7 +9,7 @@ ENV TERM=xterm
 RUN dnf -qq -y update && dnf -qq -y install git aria2 bash xz wget curl pv jq python3-pip mediainfo psmisc procps-ng qbittorrent-nox && python3 -m pip install --upgrade pip setuptools
 
 # Install latest ffmpeg
-RUN wget https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n6.1-latest-linux64-gpl-6.1.tar.xz && tar -xvf *xz && cp *6.1/bin/* /usr/bin && rm -rf *xz && rm -rf *6.1
+RUN wget https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.0-latest-linux64-gpl-7.0.tar.xz && tar -xvf *xz && cp *7.0/bin/* /usr/bin && rm -rf *xz && rm -rf *7.0
 
 # Copy files from repo to home directory
 COPY . .
